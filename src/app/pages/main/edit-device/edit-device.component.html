@@ -1,0 +1,98 @@
+<app-default-header [headerConfig]="headerConfig"></app-default-header>
+<div class="main-page-container">
+    <div>
+        <form [formGroup]="editDeviceForm" id="editDeviceForm" (submit)="editDevice()" fxLayout="column"
+              (keydown.enter)="$event.preventDefault()">
+            <div class="form-content">
+                <mat-form-field>
+                    <input matInput placeholder="{{'CONTENT.DEVICENAME' | translate}}" formControlName="name"
+                           maxlength="32" [ngClass]="{ 'is-invalid': editDeviceFormSubmitted && form.name.errors }">
+                    <mat-error *ngIf="editDeviceFormSubmitted && form.name.errors">
+                        <mat-error *ngIf="form.name.errors.required">{{'CONTENT.REQUIREDDEVICENAME' | translate}}
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="URI" formControlName="uriIdentifier"
+                           [ngClass]="{ 'is-invalid': editDeviceFormSubmitted && form.uriIdentifier.errors }">
+                    <mat-error *ngIf="editDeviceFormSubmitted && form.uriIdentifier.errors">
+                        <mat-error *ngIf="form.uriIdentifier.errors.required">{{'CONTENT.REQUIREDURI' | translate}}
+                        </mat-error>
+                        <mat-error
+                                *ngIf="form.uriIdentifier.errors.pattern">{{'CONTENT.CORRECTDATA' | translate}}
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="UID" formControlName="uidIdentifier"
+                           [ngClass]="{ 'is-invalid': editDeviceFormSubmitted && form.uidIdentifier.errors }">
+                    <mat-error *ngIf="editDeviceFormSubmitted && form.uidIdentifier.errors">
+                        <mat-error *ngIf="form.uidIdentifier.errors && form.uidIdentifier.errors.required">
+                            {{'CONTENT.REQUIREDUID' | translate}}
+                        </mat-error>
+                        <mat-error
+                                *ngIf="form.uidIdentifier.errors.pattern">{{'CONTENT.NOSPECCHAR' | translate}}
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'CONTENT.PROFILE' | translate}}</mat-label>
+                    <mat-select  formControlName="profileType" [(value)]="selectedProfileType">
+                        <mat-select-trigger>
+                            <img src="{{selectedProfileType.logo}}" alt="type logo" class="profile-type-img"/>
+                            {{selectedProfileType.title}}
+                        </mat-select-trigger>
+                        <mat-option *ngFor="let profileType of allProfileTypes" [value]="profileType">
+                            <div class="profile-type-container">
+                                <img src="{{profileType.logo}}" alt="type logo" class="profile-type-img"/>
+                                {{profileType.title}}
+                            </div>
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="editDeviceFormSubmitted && form.profileType.errors">
+                        <mat-error *ngIf="form.profileType.errors && form.profileType.errors.required">
+                            {{'CONTENT.REQUIREDPROFILETYPE' | translate}}
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <div>
+                    <div>
+                        <mat-checkbox [ngModelOptions]="{standalone: true}" [(ngModel)]="currentDevice.isUseGroupLogin"
+                                      color="primary">
+                            {{'CONTENT.USEGROUPLOGINDATA' | translate}}
+                        </mat-checkbox>
+                    </div>
+                    <div *ngIf="!currentDevice.isUseGroupLogin">
+                        <div class="form-content">
+                            <mat-form-field>
+                                <input matInput placeholder="{{'CONTENT.USERNAME' | translate}}"
+                                       formControlName="username"
+                                       [ngClass]="{ 'is-invalid': editDeviceFormSubmitted && form.username.errors }">
+                                <mat-error *ngIf="editDeviceFormSubmitted && form.username.errors">
+                                    <mat-error *ngIf="form.username.errors.required">
+                                        {{'CONTENT.REQUIREDUSERNAME' | translate}}
+                                    </mat-error>
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="{{'CONTENT.PASSWORD' | translate}}"
+                                       formControlName="password" type="password"
+                                       [ngClass]="{ 'is-invalid': editDeviceFormSubmitted && form.password.errors }">
+                                <mat-error *ngIf="editDeviceFormSubmitted && form.password.errors">
+                                    <mat-error *ngIf="form.password.errors.required">
+                                        {{'CONTENT.REQUIREDPASSWORD' | translate}}
+                                    </mat-error>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div fxLayoutAlign="space-evenly">
+            <button mat-button (click)="changeRoute()">{{'CONTENT.CANCEL' | translate}}</button>
+            <button mat-raised-button type="submit" form="editDeviceForm" color="primary">
+                {{'CONTENT.SAVE' | translate}}</button>
+        </div>
+    </div>
+</div>

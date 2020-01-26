@@ -1,0 +1,8 @@
+<div>
+	<ion-icon [name]="iconName" class="icon-default-color" [matMenuTriggerFor]="menu"></ion-icon>
+	<mat-menu #menu="matMenu">
+		<button mat-menu-item *ngFor="let item of menuConfig.menuActionList" (click)="selectItem(item.value)">
+			<span>{{item.name}}</span>
+		</button>
+	</mat-menu>
+</div>

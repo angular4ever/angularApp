@@ -1,0 +1,74 @@
+@import "../../../../variables";
+
+ion-content {
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --padding-bottom: 20px;
+  --background: $third-color;
+  min-height: 100px;
+}
+
+.groups-list {
+  height: calc(100vh - 218px);
+}
+
+.devices-list {
+  height: calc(100vh - 93px);
+}
+
+ion-list {
+  margin-top: 20px !important;
+  padding: 0;
+}
+
+ion-item-sliding {
+  ion-item {
+    padding-left: 16px;
+    min-height: 65px;
+    --padding-start: 0;
+  }
+}
+
+ion-item-sliding:not(:last-child) {
+  border-bottom: 8px solid $second-color;
+}
+
+ion-label {
+  margin-left: 16px;
+}
+
+.group-logo {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+}
+
+.item-type-group {
+  padding: 10px 0;
+}
+
+.group-name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.item-title {
+  width: 60vw;
+}
+
+.favorite-icon {
+  color: $fourth-color;
+}
+
+.item-option-icon {
+  color: $default-black;
+}
+
+ion-item-option {
+  background: $fourth-color
+}
+
+.empty-list-container {
+  //margin: 15px;
+  height: 65px;
+}

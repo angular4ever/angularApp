@@ -1,0 +1,10 @@
+<app-default-header [headerConfig]="headerConfig"
+					(headerEvent)="headerHandler($event)"></app-default-header>
+<div class="main-container">
+	<div class="title-container">
+		<span>{{'CONTENT.DEVICES' | translate}}</span>
+	</div>
+	<app-default-items-list [itemsArr]="groupDevicesConfig.devices"
+							(selectedItem)="groupDevicesHandler($event)"></app-default-items-list>
+	<app-default-fab (clickOnFab)="fabHandler()"></app-default-fab>
+</div>

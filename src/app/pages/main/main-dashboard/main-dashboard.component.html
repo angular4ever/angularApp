@@ -1,0 +1,36 @@
+<app-default-header
+        (headerEvent)="headerHandler($event)"
+        [headerConfig]="headerConfig"
+></app-default-header>
+<ion-content>
+    <div class="main-container">
+        <div *ngIf="activeTab === 0">
+            <div class="title-container">
+                <span>{{'CONTENT.FAVORITES' | translate}}</span>
+            </div>
+            <app-default-items-list [itemsArr]="favouritesDevices"
+                                    (selectedItem)="selectedFavoriteDeviceHandler($event)"
+                                    [favList]="true"
+                                    class="list-component"></app-default-items-list>
+        </div>
+        <div *ngIf="activeTab === 1">
+            <div class="title-container">
+                <span>{{'CONTENT.GROUPS' | translate}}</span>
+            </div>
+            <app-default-items-list [itemsArr]="groupOfDevices"
+                                    (selectedItem)="groupsListHandler($event)"
+                                    class="list-component"></app-default-items-list>
+        </div>
+        <app-default-fab (clickOnFab)="fabHandler()"></app-default-fab>
+    </div>
+</ion-content>
+<ion-footer>
+    <div fxLayout="row" class="bottom-tab-container">
+        <div class="tab-icon-container" fxLayoutAlign="center center" (click)="activeTab = 0">
+            <img class="tab-icon" alt="tab-icon" src="../../../../assets/icons/favorites-icon.png"/>
+        </div>
+        <div class="tab-icon-container" fxLayoutAlign="center center" (click)="activeTab = 1">
+            <img class="tab-icon" alt="tab-icon" src="../../../../assets/icons/groups-list-icon.png"/>
+        </div>
+    </div>
+</ion-footer>

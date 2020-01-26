@@ -1,0 +1,43 @@
+@import "../../../../variables";
+
+.header-main-container {
+  width: 100%;
+  min-height: 60px;
+  box-shadow: 0 2px 2px -2px $default-black;
+  background: $first-color;
+}
+
+.header-content {
+  width: 100%;
+  padding: 0 10px;
+}
+
+.back-icon {
+  color: $default-color;
+}
+
+.titles-container {
+  margin-left: 5px;
+}
+
+.main-page-logo {
+  width: 30px;
+  height: 30px;
+  margin-right: 7px;
+}
+
+.header-title {
+  color: $default-color;
+  padding-left: 16px;
+  font-weight: bold;
+  font-size: 22px;
+  width: 75vw;
+}
+
+.group-title {
+  font-weight: 400;
+}
+
+.device-title {
+  font-size: 16px !important;
+}

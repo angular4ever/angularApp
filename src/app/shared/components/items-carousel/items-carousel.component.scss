@@ -1,0 +1,42 @@
+@import "../../../../variables";
+
+.main-container {  
+  margin: 0 8px 0 8px;
+}
+
+.repeatable-item-carousel {
+  background: $default-color;
+  margin: 0 4px;
+}
+
+ion-segment-button {
+  --padding-top: 20px;
+  --padding-end: 10px;
+  --padding-bottom: 20px;
+  --padding-start: 10px;
+  --indicator-color: none;
+  --indicator-color-checked: none;
+  --border-style: none;
+  --background-checked: none;
+}
+
+.item-logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.repeatable-item-container {
+  max-width: 60%;
+}
+
+.item-name {
+  max-width: 60vw;  
+  min-width: 60px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 16px;
+  color: $default-black;
+  text-transform: none;
+}

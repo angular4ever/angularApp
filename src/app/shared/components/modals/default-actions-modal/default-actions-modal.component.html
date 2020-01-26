@@ -1,0 +1,64 @@
+<mat-dialog-content>
+    <div>
+        <p class="modal-title">{{title | translate}}</p>
+        <p class="modal-description">{{description}}</p>
+    </div>
+    <div mat-dialog-content>
+        <div *ngIf="componentType === 'analogOutput' && data.params.item.type === 'circle'"
+             class="analog-output-content">
+            <div>
+                <ion-range [value]="this.editValueForm.value.firstValue"
+                           min="0"
+                           [max]="data.params.item.maxCount"
+                           step="1"
+                           snaps="true"
+                           color="secondary"
+                           (ionChange)="changeAnalogData($event)">
+                </ion-range>
+            </div>
+            <div class="progress-wrapper"
+                 fxLayoutAlign="center center">
+                <div class="analog-outputs-text">{{this.editValueForm.value.firstValue}}</div>
+                <round-progress
+                        class="analog-outputs-circle"
+                        [current]="this.editValueForm.value.firstValue"
+                        [max]="data.params.item.maxCount"
+                ></round-progress>
+            </div>
+        </div>
+        <div *ngIf="componentType === 'analogOutput' && data.params.item.type === 'circle-radio'"
+             class="analog-output-content">
+            <div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>{{'CONTENT.SELECTVALUE' | translate}}</mat-label>
+                        <mat-select [(ngModel)]="analogRadioValue">
+                            <mat-option *ngFor="let item of analogRadioArray" [value]="item.value">
+                                <p>{{item.value}}</p>
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="progress-wrapper"
+                 fxLayoutAlign="center center">
+                <div class="analog-outputs-text">{{analogRadioValue}}</div>
+                <round-progress
+                        class="analog-outputs-circle"
+                        [current]="analogRadioValue"
+                        [max]="data.params.item.maxCount"
+                ></round-progress>
+            </div>
+        </div>
+    </div>
+    <div mat-dialog-actions class="buttons-container" fxLayoutAlign="center">
+        <button mat-button [mat-dialog-close]="false" class="cancel-btn">
+            {{'CONTENT.CANCEL' | translate}}
+        </button>
+        <button
+                mat-button
+                mat-raised-button
+                color="primary"
+                (click)="submitForm()">{{'CONTENT.SAVE' | translate}}</button>
+    </div>
+</mat-dialog-content>

@@ -1,0 +1,30 @@
+<app-default-header
+        (headerEvent)="headerHandler($event)"
+        [headerConfig]="headerConfig"
+></app-default-header>
+<div class="main-settings-container">
+    <ion-list lines="none" class="setting-list-items">
+        <ion-item fxLayoutAlign="center center" class="settings-list-item">
+            <ion-label>{{'CONTENT.CURRENTLANGUAGE' | translate}}</ion-label>
+            <mat-form-field class="select-lang-container">
+                <mat-select (selectionChange)="changeLanguage($event.value)"
+                            [(value)]="selectedLanguage"
+                            [(ngModel)]="selectedLanguage">
+                    <mat-select-trigger>
+                        <span *ngIf="selectedLanguage">
+                            <img src="{{selectedLanguage.iconLink}}" width="30px" height="30px"/>
+                        </span>
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let item of availableLanguages"
+                                [value]="item"
+                                fxLayoutAlign="center center"
+                                class="select-item">
+                        <div fxLayoutAlign="center center">
+                            <img src="{{item.iconLink}}" width="30px" height="30px"/>
+                        </div>
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </ion-item>
+    </ion-list>
+</div>

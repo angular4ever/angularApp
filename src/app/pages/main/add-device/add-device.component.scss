@@ -1,0 +1,45 @@
+@import "../../../../variables";
+
+.device-main-container {
+  padding: 10px 0 20px 0;
+  height: 100%;
+  background: $second-color;
+}
+
+ion-content {
+  --background: unset;
+}
+
+.qr-container {
+  margin-top: 10px;
+}
+
+.form-content {
+  padding: 20px;
+}
+
+.form-content mat-form-field {
+  width: 100%;
+}
+
+.mat-tab-label {
+  background-color: $fourth-color;
+  width: 50%;
+  color: $default-color;
+  opacity: unset !important;
+}
+
+.mat-ink-bar {
+  background: $default-color !important;
+}
+
+.profile-type-img{
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
+}
+
+.select-profile-type .mat-option-text {
+  display: flex;
+  align-items: center;
+}

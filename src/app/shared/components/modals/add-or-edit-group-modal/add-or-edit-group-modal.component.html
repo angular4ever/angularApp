@@ -1,0 +1,29 @@
+<mat-dialog-content>
+    <span>{{formTitle}}</span>
+    <form [formGroup]="addOrEditGroupForm" (submit)="createGroup()">
+        <mat-form-field>
+            <input matInput maxlength="32"
+                   placeholder="{{'CONTENT.ENTERGROUPNAME' | translate}}" formControlName="name"
+                   [ngClass]="{ 'is-invalid': addOrEditGroupFormSubmitted && form.name.errors }">
+            <mat-error *ngIf="addOrEditGroupFormSubmitted && form.name.errors">
+                <mat-error *ngIf="form.name.errors.required">{{'CONTENT.REQUIREDGROUPNAME' | translate}}</mat-error>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="{{'CONTENT.ENTERGROUPDESCRIPTION' | translate}}" formControlName="description">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="{{'CONTENT.USERNAME' | translate}}" formControlName="username">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="{{'CONTENT.PASSWORD' | translate}}" formControlName="password"
+                   type="password">
+        </mat-form-field>
+        <mat-dialog-actions align="end">
+            <button mat-button [mat-dialog-close]="false">
+                {{'CONTENT.CANCEL' | translate}}</button>
+            <button mat-button type="submit" mat-raised-button color="primary">
+                {{data.type === "edit" ? ('CONTENT.SAVE' | translate) : ('CONTENT.ADD' | translate)}}</button>
+        </mat-dialog-actions>
+    </form>
+</mat-dialog-content>

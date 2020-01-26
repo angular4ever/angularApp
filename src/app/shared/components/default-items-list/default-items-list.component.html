@@ -1,0 +1,54 @@
+<ion-content [ngClass]="{'groups-list': itemsArr.length && !itemsArr[0].deviceStatus,
+                         'devices-list': itemsArr.length && itemsArr[0].deviceStatus}">
+    <ion-list lines="none">
+        <ion-reorder-group (ionItemReorder)="dragItems($event)" disabled="false">
+            <ion-item-sliding [ngClass]="{'sliding-groups': itemsArr.length && !itemsArr[0].deviceStatus,
+                                      'sliding-devices': itemsArr.length && itemsArr[0].deviceStatus}"
+                              *ngFor="let item of itemsArr"
+                              >
+                <ion-item (click)='clickedItem(item, "changeRoute")' fxLayoutAlign="center">
+                    <div *ngIf="!itemsArr[0].deviceStatus">
+                        <img src="{{item.groupLogoLink ? item.groupLogoLink :
+                    '../../../../assets/images/group_logo_default.png'}}" class="group-logo"/>
+                    </div>
+                    <div *ngIf="itemsArr[0].deviceStatus">
+                        <img src="{{item.deviceLogoLink}}" class="group-logo"/>
+                    </div>
+                    <div class="item-type-group" fxLayout="column">
+					<span [ngClass]="{'group-name': !itemsArr[0].deviceStatus}" class="item-title">
+						{{item.name}}
+					</span>
+                        <span class="item-title">
+						{{item.description}}
+					</span>
+                    </div>
+                    <div *ngIf="item.deviceStatus">
+                        <ion-icon name="star"
+                                  (click)='clickedItem(item, "selectFavorite")'
+                                  *ngIf="item.favorite && !favList"
+                                  class="favorite-icon"></ion-icon>
+                        <ion-icon name="star-outline"
+                                  (click)='clickedItem(item, "selectFavorite")'
+                                  *ngIf="!item.favorite"
+                                  class="favorite-icon"></ion-icon>
+                    </div>                    
+                    <ion-reorder *ngIf="itemsArr.length > 1 && !favList" style="font-size:small"></ion-reorder>
+                </ion-item>
+                <ion-item-options side="end" *ngIf="!favList">
+                    <ion-item-option (click)='clickedItem(item, "moveItem")' *ngIf="item.deviceStatus">
+                        <ion-icon name="redo" class="item-option-icon"></ion-icon>
+                    </ion-item-option>
+                    <ion-item-option (click)='clickedItem(item, "editItem")'>
+                        <ion-icon name="create" class="item-option-icon"></ion-icon>
+                    </ion-item-option>
+                    <ion-item-option (click)='clickedItem(item, "deleteItem")'>
+                        <ion-icon name="trash" class="item-option-icon"></ion-icon>
+                    </ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+            <div *ngIf="!itemsArr || !itemsArr.length" fxLayoutAlign="center" class="empty-list-container">
+                <span fxLayoutAlign="center center">{{'CONTENT.EMPTYLIST' | translate}}</span>
+            </div>
+        </ion-reorder-group>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,77 @@
+@import "~@angular/material/theming";
+
+$main-custom-primary: (
+        50: #e2ecec,
+        100: #b6cecf,
+        200: #86aeb0,
+        300: #558e90,
+        400: #307578,
+        500: #0c5d60,
+        600: #0a5558,
+        700: #084b4e,
+        800: #064144,
+        900: #033033,
+        A100: #6bf3ff,
+        A200: #38eeff,
+        A400: #05eaff,
+        A700: #00d7eb,
+        contrast: (
+                50 : #000000,
+                100 : #000000,
+                200 : #000000,
+                300 : #ffffff,
+                400 : #ffffff,
+                500 : #ffffff,
+                600 : #ffffff,
+                700 : #ffffff,
+                800 : #ffffff,
+                900 : #ffffff,
+                A100 : #000000,
+                A200 : #000000,
+                A400 : #000000,
+                A700 : #000000
+        )
+);
+
+$main-custom-warn: (
+        50: #ffffff,
+        100: #fff7f4,
+        200: #fecdbd,
+        300: #fc9977,
+        400: #fc8259,
+        500: #fb6c3b,
+        600: #fa551d,
+        700: #f44205,
+        800: #d63a04,
+        900: #b83204,
+        A100: #ffffff,
+        A200: #fff7f4,
+        A400: #fc8259,
+        A700: #f44205,
+        contrast: (
+                50 : #000000,
+                100 : #000000,
+                200 : #000000,
+                300 : #ffffff,
+                400 : #ffffff,
+                500 : #ffffff,
+                600 : #ffffff,
+                700 : #ffffff,
+                800 : #ffffff,
+                900 : #ffffff,
+                A100 : #000000,
+                A200 : #000000,
+                A400 : #000000,
+                A700 : #000000
+        )
+);
+
+// mandatory stuff for theming
+$main-theme-palette-primary: mat-palette($main-custom-primary);
+$main-theme-palette-accent: mat-palette($main-custom-warn);
+
+// include the custom theme components into a theme object
+$main-theme: mat-light-theme($main-theme-palette-primary, $main-theme-palette-accent);
+
+// include the custom theme object into the angular material theme
+@include angular-material-theme($main-theme);

@@ -1,0 +1,12 @@
+<div class="main-container">
+	<ion-segment scrollable="true" style="margin-bottom: 30px;">
+		<div *ngFor="let item of itemsArr" (click)="clickedItem(item)" class="repeatable-item-carousel" >
+			<ion-segment-button>
+				<div class="repeatable-item-container" fxLayout="column" fxLayoutAlign="center center" >
+					<img src="{{item.deviceLogoLink}}" class="item-logo"/>
+					<p class="item-name">{{item.name}}</p>
+				</div>
+			</ion-segment-button>
+		</div>
+	</ion-segment>
+</div>

@@ -1,0 +1,19 @@
+@import "../../../../../variables";
+
+.mat-dialog-title {
+  font-size: 20px;
+  margin: unset;
+}
+
+.buttons-container {
+  justify-content: flex-end;
+}
+
+.align-btns {
+  display: flex;
+  justify-content: center;
+}
+
+.cancel-btn {
+  background: $default-color;
+}

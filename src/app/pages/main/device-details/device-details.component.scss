@@ -1,0 +1,126 @@
+@import '../../../../variables';
+
+.main-device-container {
+  height: 100%;
+  background: $second-color;
+
+
+  ion-content{
+    --padding-bottom: 60px;
+    --background: $second-color;
+  }
+
+  .device-second-container {
+    margin: 10px 5px;
+  }
+
+  .repeatable-item-header-container {
+    margin: 10px 0 10px 10px;
+  }
+
+  .repeatable-item-header-container span {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .device-details-container {
+    display: flex;
+    padding: 0 5px 10px 5px;
+  }
+
+  .repeatable-item {
+    width: 100%;
+    max-width: 33%;
+    min-height: 110px;
+    background: $default-color;
+    padding: 10px;
+  }
+
+  .connect-status-icon {
+    font-size: 32px;
+    padding-bottom: 4px;
+  }
+
+  .success-connect {
+    color: $first-color;
+  }
+
+  .close-connect {
+    color: $sixth-color;
+  }
+
+  .repeatable-item-title {
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .device-status-title{
+    min-height: 30px;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .uptime-days {
+    font-size: 14px !important;
+  }
+
+  .temperature-value {
+    font-size: 36px !important;
+  }
+
+  .uptime {
+    font-size: 13px;
+  }
+
+  .device-value {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .degree-entity {
+    font-size: 18px;
+  }
+
+  .radio-btn-container .mat-radio-outer-circle, .radio-btn-container .mat-radio-inner-circle,
+  .radio-btn-container mat-radio-button {
+    height: 30px !important;
+    width: 30px !important;
+  }
+
+  .checkbox-container {
+    margin: 10px;
+  }
+
+  .checkbox-container .mat-checkbox-inner-container {
+    height: 30px !important;
+    width: 30px !important;
+  }
+
+  .progress-wrapper{
+    padding: 10px;
+  }
+
+  .analog-outputs-text{
+    position: absolute;
+    max-width: 34px;
+    text-overflow: clip;
+    overflow: auto;
+    white-space: nowrap;
+  }
+
+  .analog-outputs-circle{
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .analog-input-container, .analog-repeatable-container{
+    width: 100%;
+  }
+
+  .analog-input-value{
+    max-width: 90%;
+    text-align: center;
+  }
+}

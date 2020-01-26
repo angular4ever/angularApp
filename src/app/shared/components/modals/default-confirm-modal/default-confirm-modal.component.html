@@ -1,0 +1,11 @@
+<mat-dialog-content cdkFocusRegionstart>
+	<h1 mat-dialog-title>{{title}}</h1>
+	<div mat-dialog-content>
+		<p>{{contentText}}</p>
+	</div>
+	<div mat-dialog-actions class="buttons-container" [ngClass]="{'align-btns': hideButtons}">
+		<button mat-button [mat-dialog-close]="false" *ngIf="!hideButtons" class="cancel-btn">{{cancelBtnText}}
+		</button>
+		<button mat-button [mat-dialog-close]="true" mat-raised-button color="primary">{{submitBtnText}}</button>
+	</div>
+</mat-dialog-content>

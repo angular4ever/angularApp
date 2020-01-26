@@ -1,0 +1,20 @@
+<div class="header-main-container" fxLayoutAlign="center">
+    <div class="header-content" fxLayoutAlign="center center">
+        <div fxLayoutAlign="center center">
+            <ion-icon name="arrow-back"
+                      aria-hidden="false"
+                      (click)="goBack()"
+                      class="back-icon"
+                      *ngIf="!headerConfig.hideBackBtn"></ion-icon>
+            <div class="titles-container" fxLayout="column" fxLayoutAlign="center">
+				<span class="header-title" [ngClass]="{'group-title': headerConfig.groupName}">
+                    {{headerConfig.groupName}}</span>
+                <span class="header-title" [ngClass]="{'device-title': headerConfig.groupName}">
+                {{headerConfig.headerTitle}}</span>
+            </div>
+        </div>
+        <div fxLayoutAlign="center">
+            <app-default-menu [menuConfig]="headerConfig" (menuEvent)="defaultMenuHandler($event)"></app-default-menu>
+        </div>
+    </div>
+</div>

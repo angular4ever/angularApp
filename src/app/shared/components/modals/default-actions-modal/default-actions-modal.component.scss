@@ -1,0 +1,49 @@
+.modal-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.modal-description {
+  text-align: center;
+  font-weight: bold;
+}
+
+.main-content {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.analog-output-content {
+  padding: 10px 0;
+}
+
+.progress-wrapper {
+  padding: 0 10px 10px 10px;
+}
+
+.analog-outputs-text {
+  position: absolute;
+  max-width: 34px;
+  text-overflow: clip;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.analog-outputs-circle {
+  width: 75px !important;
+  height: 75px !important;
+}
+
+.analog-input-container, .analog-repeatable-container {
+  width: 100%;
+}
+
+.analog-input-value {
+  max-width: 90%;
+  text-align: center;
+}
+
+ion-range {
+  padding-top: 0;
+}

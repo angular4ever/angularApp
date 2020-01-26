@@ -1,0 +1,7 @@
+{
+  "name": "Inchstone",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,36 @@
+@import "../../../../variables";
+
+.main-settings-container {
+  height: 100%;
+  background: $second-color;
+
+  .setting-list-items {
+    margin: 10px !important;
+  }
+
+  .settings-list-item {
+    min-height: 65px;
+  }
+
+  .select-lang-container {
+    max-width: 60px;
+  }
+
+  .select-item {
+    padding: 0 !important;
+  }
+
+  .current-lang-logo {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .mat-option-text {
+    display: flex !important;
+    justify-content: center;
+  }
+
+  .select-lang-container .mat-form-field-infix {
+    padding: 0 !important;
+  }
+}

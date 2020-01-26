@@ -1,0 +1,121 @@
+<div class="main-device-container">
+    <app-default-header [headerConfig]="headerConfig"
+                        (headerEvent)="headerHandler($event)"></app-default-header>
+    <ion-content>
+        <div *ngFor="let item of selectedDevice.deviceStatus; let rowIndex = index" class="device-second-container">
+            <div [ngSwitch]="item.type">
+                <div *ngSwitchCase='"deviceStatus"'>
+                    <div class="repeatable-item-header-container">
+                        <span>{{'CONTENT.DEVICESTATUS' | translate}}</span>
+                    </div>
+                    <div class="device-details-container" fxLayoutGap="10px">
+                        <div class="repeatable-item" fxLayout="column" fxLayoutAlign="space-between center">
+                            <span class="repeatable-item-title device-status-title">{{'CONTENT.CONNECTIONSTATE' | translate}}</span>
+                            <ion-icon name="checkmark-circle-outline" class="connect-status-icon success-connect"
+                                      *ngIf="item.connectionState.status"></ion-icon>
+                            <ion-icon name="close-circle-outline" class="connect-status-icon close-connect"
+                                      *ngIf="!item.connectionState.status"></ion-icon>
+                            <span class="uptime">{{item.connectionState.time}}</span>
+                        </div>
+                        <div class="repeatable-item" fxLayout="column" fxLayoutAlign="space-between center">
+                            <span class="repeatable-item-title device-status-title">{{'CONTENT.UPTIME' | translate}}</span>
+                            <div fxLayout="row"><span
+                                    class="device-value uptime-days">{{item.uptime.timeInWork[0]}}<br/>{{item.uptime.timeInWork[1]}}<br/>{{item.uptime.timeInWork[2]}}</span>
+                            </div>
+                            <span class="uptime">{{item.uptime.time}}</span>
+                        </div>
+                        <div class="repeatable-item" fxLayout="column" fxLayoutAlign="space-between center">
+                        <span class="repeatable-item-title device-status-title">
+							{{'CONTENT.TEMPTERATURE' | translate}}</span>
+                            <div class="temperature-container" fxLayoutAlign="flex-start">
+                                <span class="device-value temperature-value">{{item.temperature.temp}} </span>
+                            </div>
+                            <span class="uptime">{{item.temperature.time}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngSwitchCase='"digitalInputChannels"'>
+                    <div class="repeatable-item-header-container">
+                        <span>{{'CONTENT.DIGITALINPUTS' | translate}}</span>
+                    </div>
+                    <div class="device-details-container" fxLayoutGap="10px">
+                        <div class="repeatable-item" fxLayout="column" fxLayoutAlign="space-between center"
+                             *ngFor="let digitalItem of item.params; let i = index;">
+                            <span class="repeatable-item-title">{{'CONTENT.CHANNEL' | translate}} {{i + 1}}</span>
+                            <div class="checkbox-container">
+                                <mat-checkbox
+                                    color="primary"
+                                    class="input-digital-checkbox"
+                                    [disabled]="true"
+                                    [checked]="digitalItem.status"
+                                    (click)="elementCannotBeChanged()">
+                                </mat-checkbox>
+                            </div>
+                            <span class="uptime">{{digitalItem.time}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngSwitchCase='"digitalOutputChannels"'>
+                    <div class="repeatable-item-header-container">
+                        <span>{{'CONTENT.DIGITALOUTPUTS' | translate}}</span>
+                    </div>
+                    <div class="device-details-container" fxLayoutGap="10px">
+                        <div class="repeatable-item" fxLayout="column" fxLayoutAlign="space-between center"
+                             *ngFor="let digitalItem of item.params; let i = index" [hidden]="i > 2">
+                            <span class="repeatable-item-title">{{'CONTENT.CHANNEL' | translate}} {{i + 1}}</span>
+                            <div class="checkbox-container">
+                                <mat-checkbox
+                                    color="primary"
+                                    class="input-digital-checkbox"
+                                    [checked]="digitalItem.status"
+                                    (click)="saveCheckboxDevice(digitalItem, i, rowIndex)">
+                                </mat-checkbox>
+                            </div>
+                            <span class="uptime">{{digitalItem.time}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngSwitchCase='"analogInputsChannels"'>
+                    <div class="repeatable-item-header-container">
+                        <span>{{item.title | translate}}</span>
+                    </div>
+                    <div class="device-details-container" fxLayoutGap="10px">
+                        <div class="repeatable-item" fxLayout="column" fxLayoutAlign="space-between center"
+                             *ngFor="let analogItem of item.params; let i = index" [hidden]="i > 2">
+                            <span class="repeatable-item-title">{{'CONTENT.CHANNEL' | translate}} {{i + 1}}</span>
+                            <div class="analog-input-container">
+                                <div class="analog-repeatable-container"
+                                     fxLayoutAlign="center">
+                                    <span class="device-value analog-input-value">{{analogItem.status}} </span>
+                                </div>
+                            </div>
+                            <span class="uptime">{{analogItem.time}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngSwitchCase='"analogOutputsChannels"'>
+                    <div class="repeatable-item-header-container">
+                        <span>{{item.title | translate}}</span>
+                    </div>
+                    <div class="device-details-container" fxLayoutGap="10px">
+                        <div class="repeatable-item" fxLayout="column" fxLayoutAlign="space-between center"
+                             *ngFor="let analogItem of item.params; let i = index" [hidden]="i > 2">
+                            <span class="repeatable-item-title">{{'CONTENT.CHANNEL' | translate}} {{i + 1}}</span>
+                            <div class="progress-wrapper"
+                                 fxLayoutAlign="center center"
+                                 (click)="editAnalogItem(analogItem, item.title, i, 'analogOutput')">
+                                <div class="analog-outputs-text">{{analogItem.status}}</div>
+                                <round-progress
+                                        class="analog-outputs-circle"
+                                        [current]="analogItem.status"
+                                        [max]="analogItem.maxCount"
+                                ></round-progress>
+                            </div>
+                            <span class="uptime">{{analogItem.time}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</div>

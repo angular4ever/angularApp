@@ -1,0 +1,26 @@
+@import "../../../../variables";
+
+.main-page-container {
+  height: 100%;
+  background: $second-color;
+  overflow: auto;
+}
+
+.form-content {
+  padding: 20px;
+}
+
+.form-content mat-form-field {
+  width: 100%;
+}
+
+.profile-type-img{
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
+}
+
+.profile-type-container {
+  display: flex;
+  align-items: center;
+}
